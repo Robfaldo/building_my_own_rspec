@@ -1,11 +1,14 @@
 class Expect 
 
+  attr_reader :value
+
   def initialize(value)
     @value = value 
   end
 
-  def to(comparrison) 
-    if @value == comparrison.first_value
+  def to(comparrison)
+    raise "comparrison.value is nil" if comparrison.value == nil
+    if comparrison.match(@value)
       return "Test passed! :)"
     else 
       return "Test failed! :("
@@ -15,9 +18,39 @@ end
 
 class Equal 
 
-  attr_reader :first_value
+  attr_reader :value
 
-  def initialize(first_value)
-    @first_value = first_value
+  def initialize(value)
+    @value = value
   end 
+
+  def match(value)
+    @value == value
+  end
 end
+
+class Include 
+
+  attr_reader :value
+
+  def initialize(value) 
+    @value = value
+  end
+
+  def match(value)
+    value.include?(@value)
+  end
+end
+
+
+
+
+def expect(value)
+  Expect.new(value) 
+end
+
+def eq(value) 
+  Equal.new(value)
+end
+
+puts expect(true).to(eq(false))

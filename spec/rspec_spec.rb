@@ -15,6 +15,20 @@ describe 'Rspec mock' do
     expect(answer).to eq "Test passed! :)" 
   end
 
+  context 'include' do
+
+    it 'returns test passed msg if the array includes the number given' do
+      #set up 
+      exercise = Expect.new([1, 2, 3]).to(Include.new(2))
+      expect(exercise).to eq "Test passed! :)"
+    end
+
+    it 'returns test passed msg if the array includes the number given' do
+      exercise = Expect.new([1, 2, 3]).to(Include.new(7))
+      expect(exercise).to eq "Test failed! :("
+    end
+  end
+
 
 end
 
