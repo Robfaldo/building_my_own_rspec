@@ -51,8 +51,25 @@ describe 'Rspec mock' do
     end
   end
 
+  context 'BeA' do 
+    it 'passes the test if the object is an instance of the class' do
+      # setup 
+      obj = "string"
+      the_class = String 
+      # exercise 
+      exercise = Expect.new(obj).to(BeA.new(the_class))
+      # verification
+      expect(exercise).to eq "Test passed! :)"
+    end
 
+    it 'fails the test if the object isnt an instance of the class' do
+      obj = "string"
+      the_class = Fixnum
+      exercise = Expect.new(obj).to(BeA.new(the_class))
+      expect(exercise).to eq "Test failed! :("
+    end
+  end
 end
 
-# 2. `expect(obj).to respond_to :method`
-
+# 3. `expect(obj).to be_a Class`
+# 

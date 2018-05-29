@@ -53,10 +53,21 @@ class RespondTo
   def match(value)
     value.respond_to?(@value)
   end
-
 end
 
+class BeA
+  
+  attr_reader :value
 
+  def initialize(value)
+    @value = value
+  end
+
+  def match(value) 
+    value.is_a?(@value) 
+  end
+
+end
 
 def expect(value)
   Expect.new(value) 
@@ -69,3 +80,5 @@ end
 puts expect(true).to(eq(false))
 
 puts "string".respond_to? :capitalize
+
+puts 4.is_a?(Fixnum)
