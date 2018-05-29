@@ -1,21 +1,23 @@
-
 class Expect 
 
-  def initialize(first_value)
-    @first = first_value
+  def initialize(value)
+    @value = value 
   end
 
-  def to_equal(second_value)
-    @first == second_value ? "Test passes! :)" : "Test fails! D;"
+  def to(comparrison) 
+    if @value == comparrison.first_value
+      return "Test passed! :)"
+    else 
+      return "Test failed! :("
+    end
   end
-
 end
 
+class Equal 
 
+  attr_reader :first_value
 
-# puts expect_to_be_equal(true, true)
-# # => "Test passes! :)"
-# puts expect_to_be_equal(true, false)
-# # => "Test fails! D:"
-
-
+  def initialize(first_value)
+    @first_value = first_value
+  end 
+end

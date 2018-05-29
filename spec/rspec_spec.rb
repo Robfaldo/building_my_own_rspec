@@ -2,22 +2,19 @@ require 'rspec'
 
 describe 'Rspec mock' do 
   it 'returns false if 2 values arent equal' do
-    # Setup 
-    expect = Expect.new(true)
     # Exercise
-    answer = expect.to_equal(false)
+    answer = Expect.new(true).to(Equal.new(false))
     # Verification
-    expect(answer).to eq "Test fails! D;" 
+    expect(answer).to eq "Test failed! :(" 
   end
 
   it 'returns true if 2 values are equal' do
-    # Setup 
-    expect = Expect.new(true)
     # Exercise
-    answer = expect.to_equal(true)
+    answer = Expect.new(true).to(Equal.new(true))
     # Verification
-    expect(answer).to eq "Test passes! :)" 
+    expect(answer).to eq "Test passed! :)" 
   end
 
 
 end
+
