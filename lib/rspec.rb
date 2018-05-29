@@ -1,8 +1,12 @@
 
 class Expect 
 
-  def to_be_equal(first, second)
-    first == second ? "Test passes! :)" : "Test fails! D;"
+  def initialize(first_value)
+    @first = first_value
+  end
+
+  def to_equal(second_value)
+    @first == second_value ? "Test passes! :)" : "Test fails! D;"
   end
 
 end
