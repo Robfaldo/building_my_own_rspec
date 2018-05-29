@@ -42,6 +42,19 @@ class Include
   end
 end
 
+class RespondTo
+
+  attr_reader :value
+
+  def initialize(value)
+    @value = value
+  end
+
+  def match(value)
+    value.respond_to?(@value)
+  end
+
+end
 
 
 
@@ -54,3 +67,5 @@ def eq(value)
 end
 
 puts expect(true).to(eq(false))
+
+puts "string".respond_to? :capitalize
